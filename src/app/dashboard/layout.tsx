@@ -80,6 +80,20 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     return () => document.removeEventListener('mousedown', handleClick)
   }, [notifOpen])
 
+  // Prevent background scroll when mobile sidebar is open
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)')
+    const updateScrollLock = () => {
+      document.body.style.overflow = mq.matches && sidebarOpen ? 'hidden' : ''
+    }
+    updateScrollLock()
+    mq.addEventListener('change', updateScrollLock)
+    return () => {
+      document.body.style.overflow = ''
+      mq.removeEventListener('change', updateScrollLock)
+    }
+  }, [sidebarOpen])
+
   // All demo users for the user switcher
   const demoUserOptions = mounted ? users.filter(u => u.approval_status === 'approved') : []
 
@@ -94,9 +108,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <aside style={{
         width: 'var(--sidebar-width)', position: 'fixed', top: 0, left: 0, bottom: 0, zIndex: 50,
         background: 'var(--surface-1)', borderRight: '1px solid var(--surface-border)',
-        display: 'flex', flexDirection: 'column', transition: 'transform var(--transition-base)',
-        transform: sidebarOpen ? 'translateX(0)' : undefined,
-      }} className={sidebarOpen ? '' : 'hide-mobile'}>
+        display: 'flex', flexDirection: 'column', transition: 'transform var(--transition-base), visibility var(--transition-base)',
+      }} className={`dashboard-sidebar${sidebarOpen ? ' sidebar-open' : ''}`}>
         {/* Sidebar header */}
         <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid var(--surface-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link href="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', color: 'inherit' }}>
@@ -192,7 +205,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Main content */}
       <div style={{ flex: 1, marginLeft: 'var(--sidebar-width)', display: 'flex', flexDirection: 'column' }}>
         {/* Top bar */}
-        <header style={{
+        <header className="dashboard-header" style={{
           height: 'var(--topbar-height)', borderBottom: '1px solid var(--surface-border)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           padding: '0 24px', background: 'var(--surface-1)', position: 'sticky', top: 0, zIndex: 30,
@@ -225,12 +238,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
               {/* Notification dropdown */}
               {notifOpen && (
-                <div className="animate-scale-in" style={{
-                  position: 'absolute', top: '100%', right: 0, marginTop: 8, width: 360,
-                  background: 'var(--surface-1)', border: '1px solid var(--surface-border)',
-                  borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)', zIndex: 50,
-                  maxHeight: 420, display: 'flex', flexDirection: 'column',
-                }}>
+                <div className="notification-dropdown animate-scale-in">
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', borderBottom: '1px solid var(--surface-border)' }}>
                     <span style={{ fontSize: 15, fontWeight: 700 }}>Notifications</span>
                     {unreadNotifs > 0 && (
@@ -308,7 +316,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </header>
 
         {/* Page content */}
-        <main style={{ flex: 1, padding: 24, maxWidth: 1400 }}>
+        <main className="dashboard-main" style={{ flex: 1, padding: 24, maxWidth: 1400 }}>
           {children}
         </main>
       </div>
