@@ -10,6 +10,7 @@ import {
   UserCheck, Repeat, ChevronUp, Check, CheckCheck, Moon, Sun
 } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { format } from 'date-fns'
 
 const navItems = [
@@ -35,6 +36,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const [notifOpen, setNotifOpen] = useState(false)
   const [userSwitcherOpen, setUserSwitcherOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const notifRef = useRef<HTMLDivElement>(null)
 
   const handleSignOut = async () => {
@@ -69,12 +71,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const items = isVolunteer ? volunteerNavItems : navItems
   const unreadNotifs = mounted ? notifications.filter(n => !n.read).length : 0
 
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)')
+    const updateMobile = () => setIsMobile(mq.matches)
+    updateMobile()
+    mq.addEventListener('change', updateMobile)
+    return () => mq.removeEventListener('change', updateMobile)
+  }, [])
+
   // Close notif dropdown on outside click
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (notifRef.current && !notifRef.current.contains(e.target as Node)) {
-        setNotifOpen(false)
-      }
+      const target = e.target as Node
+      if (notifRef.current?.contains(target)) return
+      if ((target as Element).closest?.('.notification-dropdown')) return
+      setNotifOpen(false)
     }
     if (notifOpen) document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
@@ -96,6 +107,47 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   // All demo users for the user switcher
   const demoUserOptions = mounted ? users.filter(u => u.approval_status === 'approved') : []
+
+  const notificationPanel = notifOpen ? (
+    <div className="notification-dropdown animate-scale-in">
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', borderBottom: '1px solid var(--surface-border)' }}>
+        <span style={{ fontSize: 15, fontWeight: 700 }}>Notifications</span>
+        {unreadNotifs > 0 && (
+          <button className="btn btn-ghost btn-sm" onClick={() => markAllNotificationsRead()} style={{ fontSize: 12 }}>
+            <CheckCheck size={14} /> Mark all read
+          </button>
+        )}
+      </div>
+      <div style={{ flex: 1, overflowY: 'auto' }}>
+        {notifications.length === 0 ? (
+          <div style={{ padding: 32, textAlign: 'center', color: 'var(--text-muted)', fontSize: 14 }}>No notifications</div>
+        ) : (
+          notifications.slice(0, 10).map(n => (
+            <div
+              key={n.id}
+              onClick={() => { markNotificationRead(n.id); if (n.link) { window.location.href = n.link }; setNotifOpen(false) }}
+              style={{
+                padding: '12px 16px', borderBottom: '1px solid var(--surface-border)',
+                cursor: 'pointer', transition: 'background var(--transition-fast)',
+                background: n.read ? 'transparent' : 'rgba(99,102,241,0.04)',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'var(--surface-2)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = n.read ? 'transparent' : 'rgba(99,102,241,0.04)' }}
+            >
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                {!n.read && <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--primary-400)', marginTop: 5, flexShrink: 0 }} />}
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 13, fontWeight: n.read ? 500 : 700 }}>{n.title}</div>
+                  <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{n.message}</div>
+                  <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>{format(new Date(n.created_at), 'MMM d, h:mm a')}</div>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  ) : null
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
@@ -236,47 +288,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 )}
               </button>
 
-              {/* Notification dropdown */}
-              {notifOpen && (
-                <div className="notification-dropdown animate-scale-in">
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', borderBottom: '1px solid var(--surface-border)' }}>
-                    <span style={{ fontSize: 15, fontWeight: 700 }}>Notifications</span>
-                    {unreadNotifs > 0 && (
-                      <button className="btn btn-ghost btn-sm" onClick={() => markAllNotificationsRead()} style={{ fontSize: 12 }}>
-                        <CheckCheck size={14} /> Mark all read
-                      </button>
-                    )}
-                  </div>
-                  <div style={{ flex: 1, overflowY: 'auto' }}>
-                    {notifications.length === 0 ? (
-                      <div style={{ padding: 32, textAlign: 'center', color: 'var(--text-muted)', fontSize: 14 }}>No notifications</div>
-                    ) : (
-                      notifications.slice(0, 10).map(n => (
-                        <div
-                          key={n.id}
-                          onClick={() => { markNotificationRead(n.id); if (n.link) { window.location.href = n.link }; setNotifOpen(false) }}
-                          style={{
-                            padding: '12px 16px', borderBottom: '1px solid var(--surface-border)',
-                            cursor: 'pointer', transition: 'background var(--transition-fast)',
-                            background: n.read ? 'transparent' : 'rgba(99,102,241,0.04)',
-                          }}
-                          onMouseEnter={e => { e.currentTarget.style.background = 'var(--surface-2)' }}
-                          onMouseLeave={e => { e.currentTarget.style.background = n.read ? 'transparent' : 'rgba(99,102,241,0.04)' }}
-                        >
-                          <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
-                            {!n.read && <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--primary-400)', marginTop: 5, flexShrink: 0 }} />}
-                            <div style={{ flex: 1, minWidth: 0 }}>
-                              <div style={{ fontSize: 13, fontWeight: n.read ? 500 : 700 }}>{n.title}</div>
-                              <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{n.message}</div>
-                              <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 4 }}>{format(new Date(n.created_at), 'MMM d, h:mm a')}</div>
-                            </div>
-                          </div>
-                        </div>
-                      ))
-                    )}
-                  </div>
-                </div>
-              )}
+              {/* Notification dropdown — portaled on mobile to avoid header clipping */}
+              {!isMobile && notificationPanel}
             </div>
 
             {/* User menu */}
@@ -320,6 +333,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {children}
         </main>
       </div>
+
+      {mounted && isMobile && notifOpen && (
+        <>
+          <div
+            className="hide-desktop"
+            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 45 }}
+            onClick={() => setNotifOpen(false)}
+          />
+          {createPortal(notificationPanel, document.body)}
+        </>
+      )}
     </div>
   )
 }

@@ -824,12 +824,15 @@ body {
   }
 
   .notification-dropdown {
-    position: fixed;
-    top: calc(var(--topbar-height) + 8px);
-    left: 12px;
-    right: 12px;
-    width: auto;
+    position: fixed !important;
+    top: calc(var(--topbar-height) + 8px) !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: none !important;
+    margin-top: 0 !important;
     max-height: 70vh;
+    z-index: 60 !important;
   }
 }
 
@@ -1013,14 +1016,8 @@ html.dark input[type="time"] {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Dashboard shell layout */
+/* Dashboard shell layout — shared */
 .notification-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 8px;
-  width: 360px;
-  max-height: 420px;
   display: flex;
   flex-direction: column;
   background: var(--surface-1);
@@ -1034,6 +1031,15 @@ html.dark input[type="time"] {
   .dashboard-sidebar {
     transform: none !important;
     visibility: visible !important;
+  }
+
+  .notification-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    width: 360px;
+    max-height: 420px;
   }
 }
 
