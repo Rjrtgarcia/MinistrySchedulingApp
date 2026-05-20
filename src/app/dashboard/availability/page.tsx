@@ -49,7 +49,7 @@ export default function AvailabilityPage() {
         <button className="btn btn-primary" onClick={() => setShowAdd(true)}><Plus size={16} /> Add Unavailability</button>
       </div>
 
-      <div className="responsive-grid-sidebar" style={{ gridTemplateColumns: '1fr 320px' }}>
+      <div className="availability-layout">
         {/* Calendar */}
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
@@ -58,7 +58,7 @@ export default function AvailabilityPage() {
             <button className="btn btn-ghost btn-icon" onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}><ChevronRight size={18} /></button>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 2 }}>
+          <div className="calendar-grid-7" style={{ gap: 2 }}>
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
               <div key={d} style={{ textAlign: 'center', padding: 8, fontSize: 12, fontWeight: 700, color: 'var(--text-muted)' }}>{d}</div>
             ))}
@@ -108,7 +108,7 @@ export default function AvailabilityPage() {
             <div className="modal-header"><h2 className="modal-title">Block Dates</h2><button className="btn btn-ghost btn-icon" onClick={() => setShowAdd(false)}><X size={18} /></button></div>
             <form onSubmit={handleAdd}>
               <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div className="form-grid-2">
                   <div className="input-group"><label className="input-label">Start Date</label><input type="date" className="input" value={newBlock.startDate} onChange={e => setNewBlock({...newBlock, startDate: e.target.value})} required /></div>
                   <div className="input-group"><label className="input-label">End Date</label><input type="date" className="input" value={newBlock.endDate} onChange={e => setNewBlock({...newBlock, endDate: e.target.value})} required /></div>
                 </div>

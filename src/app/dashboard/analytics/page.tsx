@@ -72,7 +72,7 @@ export default function AnalyticsPage() {
         {/* Shift Response Breakdown */}
         <div className="card">
           <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>Shift Responses</h3>
-          <div style={{ display: 'flex', gap: 24, marginBottom: 20 }}>
+          <div className="stat-row-group" style={{ marginBottom: 20 }}>
             {[
               { label: 'Accepted', value: acceptedShifts, color: 'var(--success)', icon: CheckCircle },
               { label: 'Pending', value: shifts.filter(s => s.status === 'pending').length, color: 'var(--warning)', icon: Clock },
@@ -96,7 +96,7 @@ export default function AnalyticsPage() {
         {/* Training Readiness */}
         <div className="card">
           <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>Training & Readiness</h3>
-          <div style={{ display: 'flex', gap: 24, marginBottom: 20 }}>
+          <div className="stat-row-group" style={{ marginBottom: 20 }}>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 32, fontWeight: 800, color: 'var(--success)' }}>{qualified}</div>
               <div style={{ fontSize: 12, color: 'var(--text-muted)' }}>Qualified</div>

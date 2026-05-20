@@ -14,20 +14,20 @@ interface BreadcrumbsProps {
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
-    <nav style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--text-secondary)', marginBottom: 20 }}>
-      <Link href="/dashboard" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center' }} className="hover:text-primary">
+    <nav className="breadcrumb-nav" aria-label="Breadcrumb">
+      <Link href="/dashboard" style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', flexShrink: 0 }} className="hover:text-primary">
         <Home size={14} />
       </Link>
-      
+
       {items.map((item, index) => (
-        <div key={index} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <ChevronRight size={14} style={{ color: 'var(--text-muted)' }} />
+        <div key={index} className="breadcrumb-segment">
+          <ChevronRight size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
           {item.href ? (
-            <Link href={item.href} style={{ color: 'inherit', textDecoration: 'none', fontWeight: 500 }} className="hover:text-primary">
+            <Link href={item.href} className="breadcrumb-label hover:text-primary" style={{ color: 'inherit', textDecoration: 'none', fontWeight: 500 }}>
               {item.label}
             </Link>
           ) : (
-            <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{item.label}</span>
+            <span className="breadcrumb-label" style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{item.label}</span>
           )}
         </div>
       ))}

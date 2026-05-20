@@ -75,7 +75,7 @@ export default function ProfilePage() {
         <div className="card">
           <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 16 }}>Personal Information</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 500 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div className="form-grid-2">
               <div className="input-group">
                 <label className="input-label"><User size={12} style={{ display: 'inline', marginRight: 4 }} />First Name</label>
                 <input className="input" value={form.firstName} onChange={e => setForm({...form, firstName: e.target.value})} />

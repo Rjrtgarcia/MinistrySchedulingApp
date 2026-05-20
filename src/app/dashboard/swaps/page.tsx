@@ -92,7 +92,7 @@ export default function SwapsPage() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, flexWrap: 'wrap' }}>
                   <div className="avatar avatar-md">{requester?.first_name?.[0]}{requester?.last_name?.[0]}</div>
                   <div style={{ flex: 1, minWidth: 200 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+                    <div className="swap-card-names" style={{ marginBottom: 4 }}>
                       <span style={{ fontSize: 16, fontWeight: 700 }}>{requester?.first_name} {requester?.last_name}</span>
                       <ArrowRight size={14} style={{ color: 'var(--text-muted)' }} />
                       <span style={{ fontSize: 14, color: 'var(--text-secondary)' }}>{offeredTo ? `${offeredTo.first_name} ${offeredTo.last_name}` : 'Open swap'}</span>

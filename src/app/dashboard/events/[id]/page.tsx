@@ -384,7 +384,7 @@ export default function EventDetailPage() {
                   <label className="input-label">Event Name</label>
                   <input className="input" value={editForm.name} onChange={e => setEditForm({ ...editForm, name: e.target.value })} required />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div className="form-grid-2">
                   <div className="input-group">
                     <label className="input-label">Date</label>
                     <input type="date" className="input" value={editForm.date} onChange={e => setEditForm({ ...editForm, date: e.target.value })} required />
@@ -429,7 +429,7 @@ export default function EventDetailPage() {
                   <label className="input-label">New Date</label>
                   <input type="date" className="input" value={dupDate} onChange={e => setDupDate(e.target.value)} required />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div className="form-grid-2">
                   <div className="input-group">
                     <label className="input-label">Service Time</label>
                     <input type="time" className="input" value={dupTime} onChange={e => setDupTime(e.target.value)} required />

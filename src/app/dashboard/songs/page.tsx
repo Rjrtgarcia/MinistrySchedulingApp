@@ -118,7 +118,7 @@ export default function SongsPage() {
         {filtered.map(song => (
           <div key={song.id} className="card" style={{ padding: 0 }}>
             {/* Song header row */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 20px' }}>
+            <div className="song-list-row" style={{ padding: '14px 20px' }}>
               <div style={{ width: 36, height: 36, borderRadius: 'var(--radius-md)', background: 'rgba(99,102,241,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary-400)', flexShrink: 0 }}>
                 <Music2 size={16} />
               </div>
@@ -126,7 +126,7 @@ export default function SongsPage() {
                 <div style={{ fontWeight: 600, fontSize: 15 }}>{song.title}</div>
                 <div style={{ fontSize: 13, color: 'var(--text-secondary)' }}>{song.artist || 'Unknown Artist'}</div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+              <div className="song-list-actions">
                 {song.default_key && <span className="badge badge-primary">{song.default_key}</span>}
                 {song.default_bpm && <span className="badge badge-neutral">{song.default_bpm} BPM</span>}
                 {song.lyrics && (
@@ -245,7 +245,7 @@ function SongFormFields({ form, setForm, includeLyrics = false }: SongFormFields
         <label className="input-label">Artist</label>
         <input className="input" value={form.artist} onChange={e => setForm({ ...form, artist: e.target.value })} placeholder="e.g. Bethel Music" />
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+      <div className="form-grid-2">
         <div className="input-group">
           <label className="input-label">Default Key</label>
           <select className="select" value={form.key} onChange={e => setForm({ ...form, key: e.target.value })}>

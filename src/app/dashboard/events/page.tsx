@@ -185,7 +185,7 @@ export default function EventsPage() {
                   <label className="input-label">Event Name</label>
                   <input className="input" placeholder="e.g. Sunday Worship Service" value={newEvent.name} onChange={e => setNewEvent({...newEvent, name: e.target.value})} required />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div className="form-grid-2">
                   <div className="input-group">
                     <label className="input-label">Date</label>
                     <input type="date" className="input" value={newEvent.date} onChange={e => setNewEvent({...newEvent, date: e.target.value})} required />

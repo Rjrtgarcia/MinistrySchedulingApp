@@ -834,6 +834,78 @@ body {
     max-height: 70vh;
     z-index: 60 !important;
   }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .tabs {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-header {
+    padding: 16px 16px 0;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .modal-footer {
+    flex-wrap: wrap;
+    padding: 0 16px 16px;
+  }
+
+  .modal-footer .btn {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .availability-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .breadcrumb-label {
+    max-width: min(140px, 40vw);
+  }
+
+  .calendar-grid-7 {
+    gap: 1px;
+  }
+
+  .calendar-grid-7 > div {
+    padding: 4px 2px !important;
+    font-size: 11px !important;
+  }
+
+  .calendar-day-grid {
+    grid-auto-rows: minmax(80px, auto) !important;
+  }
+
+  .song-list-row {
+    flex-wrap: wrap;
+  }
+
+  .song-list-actions {
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .swap-card-names {
+    flex-wrap: wrap;
+  }
 }
 
 @media (min-width: 769px) {
@@ -932,6 +1004,83 @@ body {
   --normal-bg: var(--surface-2) !important;
   --normal-border: var(--surface-border) !important;
   --normal-text: var(--text-primary) !important;
+}
+
+/* Form & layout utilities */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.availability-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.breadcrumb-segment {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.breadcrumb-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.calendar-grid-7 {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day-headers {
+  border-bottom: 1px solid var(--surface-border);
+  background: var(--surface-2);
+}
+
+.calendar-day-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.song-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.song-list-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.swap-card-names {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-row-group {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 /* Responsive layout grids */

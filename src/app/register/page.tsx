@@ -113,7 +113,7 @@ export default function RegisterPage() {
 
         <div className="glass" style={{ borderRadius: 'var(--radius-xl)', padding: 28 }}>
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div className="form-grid-2">
               <div className="input-group">
                 <label className="input-label"><User size={12} style={{ display: 'inline', marginRight: 4 }} />First Name</label>
                 <input className="input" value={form.firstName} onChange={e => setForm({...form, firstName: e.target.value})} required />

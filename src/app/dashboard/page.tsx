@@ -94,7 +94,7 @@ function CoordinatorDashboard() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: 16 }}>
+      <div className="grid-cards">
         {/* Upcoming Events */}
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
@@ -189,7 +189,7 @@ function CoordinatorDashboard() {
                   <label className="input-label">Event Name</label>
                   <input className="input" value={newEvent.name} onChange={e => setNewEvent({ ...newEvent, name: e.target.value })} required placeholder="e.g. Sunday Worship Service" />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div className="form-grid-2">
                   <div className="input-group">
                     <label className="input-label">Date</label>
                     <input type="date" className="input" value={newEvent.date} onChange={e => setNewEvent({ ...newEvent, date: e.target.value })} required />

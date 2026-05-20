@@ -108,7 +108,7 @@ export default function VolunteerDetailPage() {
         { label: `${user.first_name} ${user.last_name}` }
       ]} />
 
-      <div style={{ display: 'grid', gridTemplateColumns: '300px 1fr', gap: 20 }} className="responsive-grid-sidebar">
+      <div className="responsive-grid-sidebar">
         {/* Profile card */}
         <div className="card" style={{ textAlign: 'center' }}>
           <div className="avatar avatar-xl" style={{ margin: '0 auto 16px' }}>{user.first_name[0]}{user.last_name[0]}</div>
@@ -158,7 +158,7 @@ export default function VolunteerDetailPage() {
               )}
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }} className="responsive-grid-half">
+            <div className="responsive-grid-half">
               <div style={{ background: 'var(--surface-2)', padding: 16, borderRadius: 'var(--radius-md)' }}>
                 <div style={{ fontSize: 12, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 12, fontWeight: 600 }}>Discipleship Journey</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>

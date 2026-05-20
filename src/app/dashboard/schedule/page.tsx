@@ -283,11 +283,7 @@ export default function SchedulePage() {
       ) : (
         <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
           {/* Day headers */}
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)',
-            borderBottom: '1px solid var(--surface-border)',
-            background: 'var(--surface-2)',
-          }}>
+          <div className="calendar-grid-7 calendar-day-headers">
             {dayNames.map(day => (
               <div key={day} style={{
                 padding: '10px 8px', textAlign: 'center',
@@ -300,11 +296,12 @@ export default function SchedulePage() {
           </div>
 
           {/* Day cells */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(7, 1fr)',
-            gridAutoRows: viewMode === 'week' ? 'minmax(200px, auto)' : 'minmax(110px, auto)',
-          }}>
+          <div
+            className="calendar-day-grid"
+            style={{
+              gridAutoRows: viewMode === 'week' ? 'minmax(200px, auto)' : 'minmax(110px, auto)',
+            }}
+          >
             {visibleDays.map((day, idx) => {
               const dayEvents = getEventsForDay(day)
               const inCurrentMonth = isSameMonth(day, currentDate)
@@ -570,7 +567,7 @@ export default function SchedulePage() {
                     autoFocus
                   />
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div className="form-grid-2">
                   <div className="input-group">
                     <label className="input-label">Service Time</label>
                     <input
