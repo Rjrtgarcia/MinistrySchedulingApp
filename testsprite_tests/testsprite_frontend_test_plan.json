@@ -1,0 +1,1338 @@
+[
+  {
+    "id": "TC001",
+    "title": "Enter the app through the admin bypass login",
+    "description": "An authorized user can use the development bypass login to reach the dashboard.",
+    "category": "User Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Click the admin role bypass control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dashboard is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is signed in"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Submit a volunteer registration request",
+    "description": "A public applicant can complete the registration form and receive confirmation that the request was received.",
+    "category": "Volunteer Registration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the contact details"
+      },
+      {
+        "type": "action",
+        "description": "Select areas of interest"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a confirmation that the registration request was received is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Complete public volunteer registration",
+    "description": "A public applicant can submit the registration form and see a confirmation that the application was received.",
+    "category": "Public Volunteer Registration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the registration form with valid applicant details"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a registration confirmation is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Assign a volunteer to an event role",
+    "description": "An authenticated coordinator can open an event workspace, assign a volunteer to a role, and see the assignment in the roster.",
+    "category": "Build Roster",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the events list"
+      },
+      {
+        "type": "action",
+        "description": "Open an event workspace"
+      },
+      {
+        "type": "action",
+        "description": "Start assigning a volunteer to a role"
+      },
+      {
+        "type": "action",
+        "description": "Select a volunteer and a role"
+      },
+      {
+        "type": "action",
+        "description": "Confirm the assignment"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the roster shows the new volunteer assignment"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Open an event workspace from the events list",
+    "description": "An authenticated user can open an event from the list and see the event workspace with roster and event details.",
+    "category": "View Events",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Click the admin role bypass control"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/events"
+      },
+      {
+        "type": "action",
+        "description": "Open an event workspace from the list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the event workspace is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the event roster and event details are visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Build a service run sheet",
+    "description": "A coordinator can reorder service items, add transition notes, and see the updated run sheet flow.",
+    "category": "Build Run Sheet",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the events list"
+      },
+      {
+        "type": "action",
+        "description": "Open the run sheet builder for an event"
+      },
+      {
+        "type": "action",
+        "description": "Reorder a run sheet item"
+      },
+      {
+        "type": "action",
+        "description": "Add transition notes to the run sheet"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated run sheet order is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Approve a pending volunteer",
+    "description": "This test verifies that an admin can review a pending volunteer registration and approve it so the status updates in the approval queue.",
+    "category": "Volunteer Approval",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/volunteers/approval"
+      },
+      {
+        "type": "action",
+        "description": "Click the approve control for a pending volunteer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the volunteer status is updated to approved"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Browse and filter the events list",
+    "description": "An authenticated user can view upcoming events and narrow the list by status and time.",
+    "category": "View Events",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Click the admin role bypass control"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/events"
+      },
+      {
+        "type": "action",
+        "description": "Apply an event status filter"
+      },
+      {
+        "type": "action",
+        "description": "Apply a time-based event filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the filtered event list is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify event entries remain visible after filtering"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Add a volunteer unavailability block",
+    "description": "This test verifies that an authenticated volunteer can add an unavailability date range with a reason and see the blocked dates appear on the calendar.",
+    "category": "Availability Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/availability"
+      },
+      {
+        "type": "action",
+        "description": "Add an unavailability date range with a reason"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the blocked dates are displayed on the calendar"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Block out availability dates",
+    "description": "A volunteer can add an unavailable date range and see it reflected in the availability calendar.",
+    "category": "Availability Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the availability page"
+      },
+      {
+        "type": "action",
+        "description": "Add an unavailable date range"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new availability block is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Search the volunteer directory",
+    "description": "An admin can search the volunteer directory and see matching volunteer results.",
+    "category": "Volunteer Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the volunteer directory"
+      },
+      {
+        "type": "action",
+        "description": "Search for a volunteer by name"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify matching volunteers are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Create a new song in the library",
+    "description": "This test verifies that an authenticated user can add a new song with complete details and see it appear in the song library.",
+    "category": "Song Library",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/songs"
+      },
+      {
+        "type": "action",
+        "description": "Add a new song with title, artist, key, and BPM"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new song appears in the song library"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Accept a pending shift swap",
+    "description": "This test verifies that a volunteer can accept a pending swap request and see it move to the accepted state.",
+    "category": "Shift Swaps",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the shift swaps link"
+      },
+      {
+        "type": "action",
+        "description": "Accept a pending swap request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the swap request is shown in the accepted state"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Review a pending volunteer application",
+    "description": "An admin can open the volunteer approval queue and see pending applications available for review.",
+    "category": "Volunteer Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the volunteer approval queue"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify pending volunteer applications are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "Decline a pending shift swap",
+    "description": "This test verifies that a volunteer can decline a pending swap request and see it move to the declined state.",
+    "category": "Shift Swaps",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the shift swaps link"
+      },
+      {
+        "type": "action",
+        "description": "Decline a pending swap request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the swap request is shown in the declined state"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Search and edit an existing song",
+    "description": "This test verifies that an authenticated user can search for a song by title, open it, edit its details, and save the changes.",
+    "category": "Song Library",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/songs"
+      },
+      {
+        "type": "action",
+        "description": "Search for a song by title"
+      },
+      {
+        "type": "action",
+        "description": "Open an existing song"
+      },
+      {
+        "type": "action",
+        "description": "Edit the song details"
+      },
+      {
+        "type": "action",
+        "description": "Save the changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated song details are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "Open a volunteer profile",
+    "description": "An admin can open an individual volunteer profile and view the volunteer's skills and journey information.",
+    "category": "Volunteer Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the volunteer directory"
+      },
+      {
+        "type": "action",
+        "description": "Open a volunteer profile"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the volunteer profile displays skills and journey information"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC018",
+    "title": "Update personal profile details",
+    "description": "This test verifies that a signed-in user can edit their name and phone number and see the updated profile information saved.",
+    "category": "User Profile",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the profile link"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the name field with a new display name"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the phone number field with a valid phone number"
+      },
+      {
+        "type": "action",
+        "description": "Save the profile changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated profile information is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC019",
+    "title": "Respond to a shift swap request",
+    "description": "A volunteer can open a swap request and accept or decline it from the swaps page.",
+    "category": "Shift Swap Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the swaps page"
+      },
+      {
+        "type": "action",
+        "description": "Open a shift swap request"
+      },
+      {
+        "type": "action",
+        "description": "Accept or decline the request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the swap request shows the updated response"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC020",
+    "title": "Reject a pending volunteer",
+    "description": "This test verifies that an admin can reject a pending volunteer registration and see the status update in the approval queue.",
+    "category": "Volunteer Approval",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/volunteers/approval"
+      },
+      {
+        "type": "action",
+        "description": "Click the reject control for a pending volunteer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the volunteer status is updated to rejected"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC021",
+    "title": "Remove a volunteer unavailability block",
+    "description": "This test verifies that an authenticated volunteer can remove an existing unavailability block and see the dates become available again.",
+    "category": "Availability Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/availability"
+      },
+      {
+        "type": "action",
+        "description": "Remove an existing unavailability"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the dates are available again"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC022",
+    "title": "Review readiness and coverage analytics",
+    "description": "An admin can open analytics and view ministry readiness and coverage reporting.",
+    "category": "Analytics Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the analytics page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify readiness and coverage analytics are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC023",
+    "title": "View the analytics dashboard overview",
+    "description": "An authenticated user can open the analytics dashboard and see the overall ministry statistics and report sections.",
+    "category": "Analytics Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/analytics"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify volunteer statistics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify event coverage reporting is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC024",
+    "title": "Change notification preferences",
+    "description": "This test verifies that a signed-in user can update notification preferences and save the new settings.",
+    "category": "App Settings",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the settings link"
+      },
+      {
+        "type": "action",
+        "description": "Change the notification preferences"
+      },
+      {
+        "type": "action",
+        "description": "Save the settings changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated notification preferences are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC025",
+    "title": "Review the full analytics dashboard sections",
+    "description": "An authenticated user can access the analytics dashboard and see volunteer, coverage, and department reporting sections together.",
+    "category": "Analytics Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/analytics"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify volunteer statistics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify department breakdown reporting is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC026",
+    "title": "Open analytics from the main dashboard",
+    "description": "An authenticated user can reach the analytics dashboard from the main dashboard and view the ministry reporting overview.",
+    "category": "Analytics Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to view the main dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to view analytics"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the analytics dashboard is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC027",
+    "title": "Review an empty events list state",
+    "description": "An authenticated user viewing events with no matching filters sees a clear empty state instead of results.",
+    "category": "View Events",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Click the admin role bypass control"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/events"
+      },
+      {
+        "type": "action",
+        "description": "Apply filters that return no matching events"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no event entries are shown"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC028",
+    "title": "Toggle the app theme",
+    "description": "This test verifies that a signed-in user can change the theme preference and see the theme update in the interface.",
+    "category": "App Settings",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the settings link"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the theme preference"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the theme preference change is reflected in the interface"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC029",
+    "title": "View analytics after accessing the dashboard",
+    "description": "An authenticated user can open analytics from the dashboard and confirm ministry reporting content is available.",
+    "category": "Analytics Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/analytics"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify volunteer readiness statistics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify coverage reporting is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC030",
+    "title": "Persist settings changes after multiple preference updates",
+    "description": "This test verifies that a signed-in user can update more than one app preference in the settings page and see the saved configuration reflected afterward.",
+    "category": "App Settings",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the settings link"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the theme preference"
+      },
+      {
+        "type": "action",
+        "description": "Change the notification preferences"
+      },
+      {
+        "type": "action",
+        "description": "Save the settings changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated settings are displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC031",
+    "title": "Manage app preferences",
+    "description": "An authenticated user can update theme and notification preferences and see the settings saved in the app UI.",
+    "category": "App Settings",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Open the settings page"
+      },
+      {
+        "type": "action",
+        "description": "Change the theme preference"
+      },
+      {
+        "type": "action",
+        "description": "Change the notification preference"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated settings are displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC032",
+    "title": "See analytics reporting sections after login",
+    "description": "An authenticated user can log in and see the analytics dashboard sections used for ministry reporting.",
+    "category": "Analytics Dashboard",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login credentials with {{LOGIN_USER}} and {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard/analytics"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify volunteer statistics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify department breakdown reporting is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC033",
+    "title": "Reject an invalid profile update",
+    "description": "This test verifies that invalid profile input is blocked and the existing profile information is preserved.",
+    "category": "User Profile",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the profile link"
+      },
+      {
+        "type": "action",
+        "description": "Clear the name field"
+      },
+      {
+        "type": "action",
+        "description": "Save the profile changes"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a profile validation error is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the current profile information remains displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC034",
+    "title": "Prevent duplicate volunteer registration",
+    "description": "A public applicant who submits the form with the same details twice sees a duplicate registration validation and no second request is created.",
+    "category": "Volunteer Registration",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the contact details"
+      },
+      {
+        "type": "action",
+        "description": "Select areas of interest"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form again with the same details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a duplicate registration validation is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify only one registration confirmation is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC035",
+    "title": "Handle an empty volunteer search",
+    "description": "An admin can search for a volunteer name with no matches and see an empty state instead of results.",
+    "category": "Volunteer Management",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the login field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the link to open the volunteer directory"
+      },
+      {
+        "type": "action",
+        "description": "Search for a name that has no matches"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is visible"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC036",
+    "title": "Keep a swap request in its current state after already handled actions",
+    "description": "This test verifies that handled swap requests do not allow duplicate acceptance or decline actions and remain in their completed state.",
+    "category": "Shift Swaps",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the shift swaps link"
+      },
+      {
+        "type": "action",
+        "description": "Accept a pending swap request"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to accept the same handled swap request again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the swap request remains in the accepted state"
+      }
+    ],
+    "priority": "Low"
+  }
+]
